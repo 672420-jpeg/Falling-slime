@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cnd0225ov66h1" path="res://script/game_manager.gd" id="1_xwcet"]
 [ext_resource type="Texture2D" uid="uid://dp3r8abv46xfa" path="res://assets/sprites/world_tileset.png" id="2_dbls1"]
 [ext_resource type="PackedScene" uid="uid://byyug1snri4de" path="res://scene/slime.tscn" id="3_33cqm"]
+[ext_resource type="PackedScene" uid="uid://bymq7cx7i5csa" path="res://scene/slime_purple.tscn" id="5_p1ry8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_33cqm"]
 texture = ExtResource("2_dbls1")
@@ -197,7 +198,10 @@ position = Vector2(26, 23)
 zoom = Vector2(4, 4)
 
 [node name="slime" parent="." unique_id=2146990773 instance=ExtResource("3_33cqm")]
-position = Vector2(-33, -66)
+position = Vector2(-53, -66)
+
+[node name="Slime_purple" parent="." unique_id=1416605431 instance=ExtResource("5_p1ry8")]
+position = Vector2(9, -66)
 
 [node name="Label" type="Node" parent="." unique_id=2055608373]
 
@@ -211,10 +215,10 @@ text = "Your score is"
 
 [node name="World boundary" type="StaticBody2D" parent="." unique_id=1110394472]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World boundary" unique_id=1895241315]
+[node name="CollisionLeft" type="CollisionShape2D" parent="World boundary" unique_id=1895241315]
 position = Vector2(0, 24)
 shape = SubResource("WorldBoundaryShape2D_75rro")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World boundary" unique_id=2138694500]
+[node name="CollisionRight" type="CollisionShape2D" parent="World boundary" unique_id=2138694500]
 position = Vector2(0, 25)
 shape = SubResource("WorldBoundaryShape2D_d4hq0")
