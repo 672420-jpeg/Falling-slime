@@ -7,6 +7,7 @@ func _ready():
 	slime_purple.visible = false
 	$killzone/CollisionShape2D.disabled = true
 	#position.x =randi_range(-110, 160)
+	
 @onready var game_manager: Node = %"Game manager"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

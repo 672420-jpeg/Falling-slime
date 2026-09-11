@@ -182,13 +182,33 @@ unique_name_in_owner = true
 script = ExtResource("1_xwcet")
 
 [node name="Scorelabel" type="Label" parent="Game manager" unique_id=2047952644]
-offset_left = 98.0
+offset_left = 105.0
 offset_top = -39.0
-offset_right = 137.74
+offset_right = 144.74
 offset_bottom = -16.0
 theme_override_font_sizes/font_size = 8
-text = "X"
+text = "X seconds"
 horizontal_alignment = 1
+
+[node name="LeftSpawn" type="Marker2D" parent="Game manager" unique_id=1269072964]
+
+[node name="RightSpawn" type="Marker2D" parent="Game manager" unique_id=1620259512]
+
+[node name="slime" parent="Game manager" unique_id=2146990773 instance=ExtResource("3_33cqm")]
+position = Vector2(-53, -66)
+
+[node name="Slime_purple" parent="Game manager" unique_id=1416605431 instance=ExtResource("5_p1ry8")]
+position = Vector2(9, -66)
+
+[node name="SurvivalTimer" type="Timer" parent="Game manager" unique_id=701626847]
+autostart = true
+
+[node name="SpawnTimer" type="Timer" parent="Game manager" unique_id=1476434286]
+wait_time = 2.0
+autostart = true
+
+[node name="SurvivalPoint" type="Timer" parent="Game manager" unique_id=1769866954]
+autostart = true
 
 [node name="CharacterBody2D" parent="." unique_id=248757188 instance=ExtResource("1_5kiuu")]
 position = Vector2(-10, 97)
@@ -196,12 +216,6 @@ position = Vector2(-10, 97)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1249256009]
 position = Vector2(26, 23)
 zoom = Vector2(4, 4)
-
-[node name="slime" parent="." unique_id=2146990773 instance=ExtResource("3_33cqm")]
-position = Vector2(-53, -66)
-
-[node name="Slime_purple" parent="." unique_id=1416605431 instance=ExtResource("5_p1ry8")]
-position = Vector2(9, -66)
 
 [node name="Label" type="Node" parent="." unique_id=2055608373]
 
@@ -211,7 +225,7 @@ offset_top = -49.0
 offset_right = 148.0
 offset_bottom = -18.0
 theme_override_font_sizes/font_size = 8
-text = "Your score is"
+text = "You survived for"
 
 [node name="World boundary" type="StaticBody2D" parent="." unique_id=1110394472]
 
