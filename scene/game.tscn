@@ -200,6 +200,10 @@ position = Vector2(-53, -66)
 [node name="Slime_purple" parent="Game manager" unique_id=1416605431 instance=ExtResource("5_p1ry8")]
 position = Vector2(9, -66)
 
+[node name="Timer" type="Timer" parent="Game manager/Slime_purple" unique_id=290263595]
+wait_time = 2.0
+autostart = true
+
 [node name="SurvivalTimer" type="Timer" parent="Game manager" unique_id=701626847]
 autostart = true
 
@@ -236,3 +240,5 @@ shape = SubResource("WorldBoundaryShape2D_75rro")
 [node name="CollisionRight" type="CollisionShape2D" parent="World boundary" unique_id=2138694500]
 position = Vector2(0, 25)
 shape = SubResource("WorldBoundaryShape2D_d4hq0")
+
+[connection signal="timeout" from="Game manager/Slime_purple/Timer" to="Game manager/Slime_purple" method="_on_timer_timeout"]

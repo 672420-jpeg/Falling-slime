@@ -23,8 +23,8 @@ func _process(delta):
 		green_slime_bottom_hits += 1
 		
 		
-		if green_slime_bottom_hits >=2:
-			slime_purple.visible = true
-			slime_purple.set_process(true)
-		$killzone/CollisionShape2D.disabled = false
-		print("purple slime coming")
+		#if green_slime_bottom_hits >=2:
+			#slime_purple.visible = true
+			#slime_purple.set_process(true)
+		#$killzone/CollisionShape2D.disabled = false
+		#print("purple slime coming")
