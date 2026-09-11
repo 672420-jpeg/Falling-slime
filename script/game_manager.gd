@@ -4,13 +4,14 @@ var score = 0
 
 @onready var scorelabel = $Scorelabel
 
-var slime_scene = preload("res://scene/slime.tscn")
+var slime_scene = preload("res://scene/boulder.tscn")
+
 
 
 
 var survival_time = 0.0
-var spawn_interval = 1
-var spawn_amount = 1
+var spawn_interval = 10
+var spawn_amount = 0
 var survival_point = 0
 
 @onready var survival_timer: Timer = $SurvivalTimer
@@ -39,7 +40,7 @@ func add_point():
 	#score += 1
 	#scorelabel.text = str(score)
 	score += 1
-	scorelabel.text = str(score)
+	scorelabel.text = ("You've survived " + str(score) + " seconds")
 	print(score)
 
 func spawn_enemies():
@@ -63,6 +64,7 @@ func spawn_enemies():
 			add_child(slime)
 
 		await get_tree().create_timer(spawn_interval).timeout
+		
 
 func _ready():
 	spawn_enemies()
