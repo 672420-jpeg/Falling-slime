@@ -11,19 +11,18 @@ var slime_scene = preload("res://scene/slime.tscn")
 var survival_time = 0.0
 var spawn_interval = 1
 var spawn_amount = 1
-var survival_points = 0
+var survival_point = 0
 
 @onready var survival_timer: Timer = $SurvivalTimer
 @onready var spawn_timer: Timer = $SpawnTimer
-@onready var survival_point: Timer = $SurvivalPoint
+
 
 
 func _on_survival_timer_timeout():
 	survival_time += 1
 	
 	
-func _on_survival_point_timeout():
-	survival_points += 1
+
 
 
 func _process(delta):
@@ -36,13 +35,12 @@ func _process(delta):
 	spawn_interval = max(0.5, 2.0 - survival_time / 30.0)
 
 
-#func add_point():
+func add_point():
 	#score += 1
 	#scorelabel.text = str(score)
-	if survival_points % 10 == 1:
-		score += 1
-		scorelabel.text = str(score)
-		print(" surviving for " & survival_time & " seconds ")
+	score += 1
+	scorelabel.text = str(score)
+	print(score)
 
 func spawn_enemies():
 	while true:

@@ -187,7 +187,7 @@ offset_top = -39.0
 offset_right = 144.74
 offset_bottom = -16.0
 theme_override_font_sizes/font_size = 8
-text = "X seconds"
+text = "X "
 horizontal_alignment = 1
 
 [node name="LeftSpawn" type="Marker2D" parent="Game manager" unique_id=1269072964]
@@ -225,7 +225,7 @@ offset_top = -49.0
 offset_right = 148.0
 offset_bottom = -18.0
 theme_override_font_sizes/font_size = 8
-text = "You survived for"
+text = "Your score is"
 
 [node name="World boundary" type="StaticBody2D" parent="." unique_id=1110394472]
 
