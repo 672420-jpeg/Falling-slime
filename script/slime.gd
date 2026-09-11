@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var game_manager: Node = %"Game manager"
+@onready var game_manager: Node = get_parent()
 @onready var slime_purple: Node2D = $"../Slime_purple"
 
 
@@ -17,7 +17,7 @@ func _process(delta):
 	
 	
 	if position.y > 100:
-		game_manager.add_point()
+		#game_manager.add_point()
 		position.y = -100
 		position.x =randi_range(-110, 160)
 		green_slime_bottom_hits += 1
