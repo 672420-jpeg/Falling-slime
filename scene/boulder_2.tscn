@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://vngqmigx23gd"]
+
+[ext_resource type="Script" uid="uid://bsjipjundw5cy" path="res://script/boulder_2.gd" id="1_xccfh"]
+[ext_resource type="Texture2D" uid="uid://c8h814cblb1xg" path="res://assets/sprites/boulder.png" id="2_jhv43"]
+[ext_resource type="PackedScene" uid="uid://4238bl6eadrq" path="res://scene/killzone.tscn" id="3_4yybi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnukl"]
+atlas = ExtResource("2_jhv43")
+region = Rect2(0, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t50gs"]
+atlas = ExtResource("2_jhv43")
+region = Rect2(8, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tilkh"]
+atlas = ExtResource("2_jhv43")
+region = Rect2(16, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8odq2"]
+atlas = ExtResource("2_jhv43")
+region = Rect2(24, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pobr2"]
+atlas = ExtResource("2_jhv43")
+region = Rect2(0, 48, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg5eb"]
+atlas = ExtResource("2_jhv43")
+region = Rect2(8, 48, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h76pd"]
+atlas = ExtResource("2_jhv43")
+region = Rect2(16, 48, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvwbg"]
+atlas = ExtResource("2_jhv43")
+region = Rect2(24, 48, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4hq0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnukl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t50gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tilkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8odq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pobr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg5eb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h76pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvwbg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xccfh"]
+radius = 9.0
+
+[node name="boulder2" type="Node2D"]
+script = ExtResource("1_xccfh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2.2587893, 2.2587893)
+sprite_frames = SubResource("SpriteFrames_d4hq0")
+autoplay = "default"
+frame_progress = 0.7614673
+
+[node name="killzone" parent="." instance=ExtResource("3_4yybi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+shape = SubResource("CircleShape2D_xccfh")
