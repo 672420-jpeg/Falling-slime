@@ -4,7 +4,7 @@ extends Node2D
 
 
 @onready var game_manager: Node = get_parent()
-@onready var slime_purple: Node2D = $"../Slime_purple"
+#@onready var slime_purple: Node2D = $"../Slime_purple"
 @onready var slime: Node2D = $"."
 
 var green_slime_bottom_hits = 0

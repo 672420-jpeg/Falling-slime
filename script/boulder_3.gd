@@ -21,8 +21,8 @@ func _process(delta):
 	
 	if position.y > 100:
 		#game_manager.add_point()
-		position.y = -100
-		position.x =randi_range(-110, 160)
+		#position.y = -100
+		#position.x =randi_range(-110, 160)
 		Boulder_3_bottom_hits += 1
 		print("boulder 3")
 

@@ -34,12 +34,13 @@ var survival_time = 0.0
 var spawn_interval = 10
 var spawn_amount = 0
 var survival_point = 0
+var boulder_count = 1
 
 @onready var survival_timer: Timer = $SurvivalTimer
 @onready var spawn_timer: Timer = $SpawnTimer
 
-func _on_survival_timer_timeout():
-	survival_time += 1
+#func _on_survival_timer_timeout():
+	#survival_time += 1
 	
 	
 func _ready():
@@ -49,8 +50,92 @@ func _ready():
 	$boulder3.position = spawn_positions[2]
 	$boulder4.position = spawn_positions[3]
 	$boulder5.position = spawn_positions[4]
+	if boulder_count == 1 and $boulder.position.y > 100:
+		boulder_count = 2
+	elif boulder_count == 2 and $boulder2.position.y > 100:
+		boulder_count = 3
+	elif boulder_count == 3 and $boulder3.position.y > 100:
+		boulder_count = 4
+	elif boulder_count == 4 and $boulder4.position.y > 100:
+		boulder_count = 5
 
-#func _process(delta):
+func _process(_delta):
+	#print("Boulder is at " + str($boulder.position))
+	#print("Boulder 2 is at " + str($boulder2.position))
+	#print("Boulder 3 is at " + str($boulder3.position))
+	#print("Boulder 4 is at " + str($boulder4.position))
+	#print("Boulder 5 is at " + str($boulder5.position))
+	if boulder_count == 1 \
+	and $boulder.position.y > 100:
+
+		spawn_positions.shuffle()
+		$boulder.position = spawn_positions[0]
+		print("Boulder is at " + str($boulder.position))
+		boulder_count = 2
+	
+	if (
+	 boulder_count == 2 
+	and boulder.position.y > 100 
+	and $boulder2.position.y > 100 
+	):
+	
+		spawn_positions.shuffle()
+		$boulder.position = spawn_positions[0]
+		$boulder2.position = spawn_positions[1]
+		print("Boulder is at " + str($boulder.position))
+		print("Boulder 2 is at " + str($boulder2.position))
+		boulder_count = 3
+	
+	if boulder_count == 3 \
+	and $boulder.position.y > 100 \
+	and $boulder2.position.y > 100 \
+	and $boulder3.position.y > 100:
+	
+		spawn_positions.shuffle()
+		$boulder.position = spawn_positions[0]
+		$boulder2.position = spawn_positions[1]
+		$boulder3.position = spawn_positions[2]
+		print("Boulder is at " + str($boulder.position))
+		print("Boulder 2 is at " + str($boulder2.position))
+		print("Boulder 3 is at " + str($boulder3.position))
+		boulder_count = 4
+	
+	if boulder_count == 4 \
+	and $boulder.position.y > 100 \
+	and $boulder2.position.y > 100 \
+	and $boulder3.position.y > 100 \
+	and $boulder4.position.y > 100:
+	
+		spawn_positions.shuffle()
+		$boulder.position = spawn_positions[0]
+		$boulder2.position = spawn_positions[1]
+		$boulder3.position = spawn_positions[2]
+		$boulder4.position = spawn_positions[3]
+		print("Boulder is at " + str($boulder.position))
+		print("Boulder 2 is at " + str($boulder2.position))
+		print("Boulder 3 is at " + str($boulder3.position))
+		print("Boulder 4 is at " + str($boulder4.position))
+		boulder_count = 5
+	
+	if boulder_count == 5 \
+	$boulder.position.y > 100 \
+	and $boulder2.position.y > 100 \
+	and $boulder3.position.y > 100 \
+	and $boulder4.position.y > 100 \
+	and $boulder5.position.y > 100:
+	
+		spawn_positions.shuffle()
+		$boulder.position = spawn_positions[0]
+		$boulder2.position = spawn_positions[1]
+		$boulder3.position = spawn_positions[2]
+		$boulder4.position = spawn_positions[3]
+		$boulder5.position = spawn_positions[4]
+		print("Boulder is at " + str($boulder.position))
+		print("Boulder 2 is at " + str($boulder2.position))
+		print("Boulder 3 is at " + str($boulder3.position))
+		print("Boulder 4 is at " + str($boulder4.position))
+		print("Boulder 5 is at " + str($boulder5.position))
+	
 	#survival_time += delta
 
 	# Increase the number of slimes every 10 seconds
