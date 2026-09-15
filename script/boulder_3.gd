@@ -1,6 +1,8 @@
-extends Node2D
-@onready var boulder_3: Node2D = $"."
-@onready var boulder_4: Node2D = $"../boulder4"
+extends Area2D
+
+@onready var game_manager: Node = get_parent()
+@onready var boulder_3: Area2D = $"."
+@onready var boulder_4: Area2D = $"../boulder4"
 var random_boulder_speed = randi_range(40, 45)
 var Boulder_3_bottom_hits = 0
 
@@ -24,9 +26,22 @@ func _process(delta):
 		#position.y = -100
 		#position.x =randi_range(-110, 160)
 		Boulder_3_bottom_hits += 1
-		print("boulder 3")
+		#print("boulder 3")
 
 		if Boulder_3_bottom_hits >=1:
 			boulder_4.visible = true
 			boulder_4.set_process(true)
 			#$killzone/CollisionShape2D.disabled = false
+			
+#func _on_body_entered(body: Node2D) -> void:
+#	if body.name == "boulder":
+		#body.queue_free()
+		#print("Boulder collision detected")
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.name =="boulder":
+		global_position = game_manager.spawn_positions.pick_random()
+		print("Boulder 3 collision detected. moving to ", position.x)
+		#area.get_node("CollisionShape2D").queue_free()
+		#area.get_node("AnimatedSprite2D").queue_free()

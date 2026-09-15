@@ -613,8 +613,6 @@ position = Vector2(-10, 97)
 position = Vector2(26, 23)
 zoom = Vector2(4, 4)
 
-[node name="Label" type="Node" parent="."]
-
 [node name="World boundary" type="StaticBody2D" parent="."]
 
 [node name="CollisionLeft" type="CollisionShape2D" parent="World boundary"]

@@ -27,4 +27,4 @@ func _process(delta):
 
 func _on_timer_timeout():
 	game_manager.add_point()
-	print("second")
+	#print("second")

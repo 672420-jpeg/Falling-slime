@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://crhif0m8sh6id"]
+[gd_scene load_steps=16 format=3 uid="uid://crhif0m8sh6id"]
 
 [ext_resource type="Script" uid="uid://bymwclxigwfih" path="res://script/boulder_3.gd" id="1_1esh0"]
 [ext_resource type="Texture2D" uid="uid://c8h814cblb1xg" path="res://assets/sprites/boulder.png" id="2_lh3ke"]
 [ext_resource type="PackedScene" uid="uid://4238bl6eadrq" path="res://scene/killzone.tscn" id="3_w6p8r"]
+[ext_resource type="Script" uid="uid://btl6pmnln4nxx" path="res://script/boulder_collider.gd" id="4_etjjo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vnukl"]
 atlas = ExtResource("2_lh3ke")
@@ -71,7 +72,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rju0r"]
 radius = 11.0
 
-[node name="boulder" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1esh0"]
+radius = 13.038404
+
+[node name="boulder" type="Area2D"]
 script = ExtResource("1_1esh0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -85,3 +89,10 @@ frame_progress = 0.7614673
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 shape = SubResource("CircleShape2D_rju0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1esh0")
+script = ExtResource("4_etjjo")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

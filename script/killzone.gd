@@ -8,6 +8,10 @@ func _on_body_entered(body):
 		print("You died")
 		timer.start()
 		body.get_node("CollisionShape2D").queue_free()
+#	elif body.name == "boulder":
+#		body.get_node("CollisionShape2D").queue_free()
+#		print("Boulder collision detected")
+#		body.queue_free()
 	
 
 

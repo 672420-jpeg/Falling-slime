@@ -8,7 +8,7 @@ var score = 0
 @onready var boulder_3: Node2D = $boulder3
 @onready var boulder_2: Node2D = $boulder2
 @onready var boulder: Node2D = $boulder
-
+@onready var game_manager: Node = %"Game manager"
 #var slime_scene = preload("res://scene/boulder.tscn")
 #var boulder_scene = preload("res://scene/boulder.tscn")
 #var boulder_scene_2 = preload("res://scene/boulder_2.tscn")
@@ -152,7 +152,7 @@ func add_point():
 	#scorelabel.text = str(score)
 	score += 1
 	scorelabel.text = ("You've survived " + str(score) + " seconds")
-	print(score)
+	#print(score)
 
 #func spawn_enemies():
 	#while true:

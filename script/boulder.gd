@@ -1,7 +1,7 @@
-extends Node2D
+extends Area2D
 
 @onready var game_manager: Node = get_parent()
-@onready var boulder_2: Node2D = $"../boulder2"
+@onready var boulder_2: Area2D = $"../boulder2"
 
 var random_boulder_speed = randi_range(40, 45)
 var Boulder_1_bottom_hits = 0
@@ -33,3 +33,20 @@ func _process(delta):
 			#slime_purple.set_process(true)
 		#$killzone/CollisionShape2D.disabled = false
 		#print("purple slime coming")
+func _on_timer_timeout():
+	game_manager.add_point()
+	print("second")
+	
+	
+#func _on_body_entered(body: Node2D) -> void:
+	#if body.name == "boulder":
+		#body.queue_free()
+		#print("Boulder collision detected")
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.name =="boulder":
+		global_position = game_manager.spawn_positions.pick_random()
+		print("Boulder collision detected. moving to ", position.x)
+		#area.get_node("CollisionShape2D").queue_free()
+		#area.get_node("AnimatedSprite2D").queue_free()
