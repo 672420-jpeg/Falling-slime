@@ -117,12 +117,14 @@ func _process(_delta):
 		print("Boulder 4 is at " + str($boulder4.position))
 		boulder_count = 5
 	
-	if boulder_count == 5 \
-	$boulder.position.y > 100 \
-	and $boulder2.position.y > 100 \
-	and $boulder3.position.y > 100 \
-	and $boulder4.position.y > 100 \
-	and $boulder5.position.y > 100:
+	if (
+	boulder_count == 5 
+	and $boulder.position.y > 100 
+	and $boulder2.position.y > 100 
+	and $boulder3.position.y > 100 
+	and $boulder4.position.y > 100 
+	and $boulder5.position.y > 100
+	):
 	
 		spawn_positions.shuffle()
 		$boulder.position = spawn_positions[0]
