@@ -1,5 +1,6 @@
 extends Node2D
 @onready var slime_purple: Node2D = $"."
+@onready var timer: Timer = $Timer
 
 func _ready():
 	position.x =randi_range(-110, 160)
@@ -13,13 +14,17 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(position.y)
-	position.y += 80 * delta
-	
-	
+	position.y += 120 * delta
 	
 	
 	if position.y > 100:
-		game_manager.add_point()
+		#game_manager.add_point()
 		position.y = -100
 		position.x =randi_range(-110, 160)
 		print("slime_purple")
+	
+
+
+func _on_timer_timeout():
+	game_manager.add_point()
+	print("second")
