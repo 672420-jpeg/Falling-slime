@@ -90,7 +90,7 @@ frame_progress = 0.7614673
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 shape = SubResource("CircleShape2D_xccfh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BoulderCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jhv43")
 script = ExtResource("4_jhv43")
 

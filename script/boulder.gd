@@ -47,6 +47,6 @@ func _on_timer_timeout():
 func _on_area_entered(area: Area2D) -> void:
 	if area.name =="boulder":
 		global_position = game_manager.spawn_positions.pick_random()
-		print("Boulder collision detected. moving to ", position.x)
+		print("Boulder collision detected. was at ", global_position, "moving to ", game_manager.spawn_positions.pick_random())
 		#area.get_node("CollisionShape2D").queue_free()
 		#area.get_node("AnimatedSprite2D").queue_free()

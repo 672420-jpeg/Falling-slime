@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://drti6nkwkepqg"]
+[gd_scene load_steps=16 format=3 uid="uid://drti6nkwkepqg"]
 
 [ext_resource type="Script" uid="uid://c7wfoe3sgx6b" path="res://script/boulder_5.gd" id="1_gery1"]
 [ext_resource type="Texture2D" uid="uid://c8h814cblb1xg" path="res://assets/sprites/boulder.png" id="2_7ec0t"]
 [ext_resource type="PackedScene" uid="uid://4238bl6eadrq" path="res://scene/killzone.tscn" id="3_8sx7s"]
+[ext_resource type="Script" uid="uid://btl6pmnln4nxx" path="res://script/boulder_collider.gd" id="4_hkuu7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vnukl"]
 atlas = ExtResource("2_7ec0t")
@@ -90,8 +91,9 @@ frame_progress = 0.010449674
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 shape = SubResource("CircleShape2D_0ndim")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BoulderCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gery1")
+script = ExtResource("4_hkuu7")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
