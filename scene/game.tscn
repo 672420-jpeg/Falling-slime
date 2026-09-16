@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c4iinuvf5vxu" path="res://scene/character_body_2d.tscn" id="1_5kiuu"]
 [ext_resource type="Script" uid="uid://cnd0225ov66h1" path="res://script/game_manager.gd" id="1_xwcet"]
 [ext_resource type="Texture2D" uid="uid://dp3r8abv46xfa" path="res://assets/sprites/world_tileset.png" id="2_dbls1"]
+[ext_resource type="FontFile" uid="uid://3xkh64y8q6ng" path="res://assets/fonts/PixelOperator8.ttf" id="3_5g16k"]
 [ext_resource type="PackedScene" uid="uid://bjrinihse4pah" path="res://scene/boulder_4.tscn" id="3_17rxn"]
 [ext_resource type="PackedScene" uid="uid://byyug1snri4de" path="res://scene/slime.tscn" id="3_33cqm"]
 [ext_resource type="PackedScene" uid="uid://vngqmigx23gd" path="res://scene/boulder_2.tscn" id="3_qpk70"]
@@ -491,7 +492,7 @@ animations = [{
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_75rro"]
 normal = Vector2(-1, 0)
-distance = -170.0
+distance = -171.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d4hq0"]
 normal = Vector2(0.9999062, 0.013697345)
@@ -514,6 +515,7 @@ offset_left = 81.0
 offset_top = -47.0
 offset_right = 159.0
 offset_bottom = -17.0
+theme_override_fonts/font = ExtResource("3_5g16k")
 theme_override_font_sizes/font_size = 8
 text = "You've survived 0 seconds"
 horizontal_alignment = 1
@@ -608,12 +610,14 @@ frame_progress = 0.7614673
 
 [node name="CharacterBody2D" parent="." unique_id=1499321158 instance=ExtResource("1_5kiuu")]
 position = Vector2(-10, 97)
+collision_mask = 36
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=567676255]
 position = Vector2(26, 23)
 zoom = Vector2(4, 4)
 
 [node name="World boundary" type="StaticBody2D" parent="." unique_id=573268518]
+collision_layer = 32
 
 [node name="CollisionLeft" type="CollisionShape2D" parent="World boundary" unique_id=583781417]
 position = Vector2(0, 24)

@@ -150,6 +150,7 @@ func _process(_delta):
 		$boulder2.position = spawn_positions[1]
 		$boulder3.position = spawn_positions[2]
 		$boulder4.position = spawn_positions[3]
+
 		$boulder5.position = spawn_positions[4]
 		print("boulder is at ", boulder.position)
 		print("boulder 2 is at ", boulder_2.position)
