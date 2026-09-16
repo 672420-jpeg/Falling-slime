@@ -30,6 +30,7 @@ window/stretch/aspect="expand"
 2d_physics/layer_2="Boulder"
 2d_physics/layer_3="Floor"
 2d_physics/layer_4="Killzone"
+2d_physics/layer_5="Overlap detector"
 
 [physics]
 

@@ -39,10 +39,15 @@ func _process(delta):
 		#print("Boulder collision detected")
 
 
-func _on_area_entered(area: Area2D) -> void:
-	print("COLLISION WITH: ", area.name)
-	if area.name =="BoulderCollision":
-		global_position = game_manager.spawn_positions.pick_random()
-		print("Boulder 2 collision detected. was at ", global_position, " moving to ", game_manager.spawn_positions.pick_random())
+func _on_boulder_detector_area_entered(area: Area2D) -> void:
+	#print("COLLISION WITH: ", area.name)
+	if area.name.begins_with("boulder"):
+		
+		var old_position = global_position
+		var new_position = game_manager.get_free_spawn_positions()
+		global_position = new_position
+		#print("OLD: ", old_position)
+		#print("NEW: ", new_position)
+		print("Boulder 2 collision detected. was at ", old_position, " moving to ", new_position)
 		#area.get_node("CollisionShape2D").queue_free()
 		#area.get_node("AnimatedSprite2D").queue_free()

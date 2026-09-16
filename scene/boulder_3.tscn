@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://crhif0m8sh6id"]
+[gd_scene format=3 uid="uid://crhif0m8sh6id"]
 
 [ext_resource type="Script" uid="uid://bymwclxigwfih" path="res://script/boulder_3.gd" id="1_1esh0"]
 [ext_resource type="Texture2D" uid="uid://c8h814cblb1xg" path="res://assets/sprites/boulder.png" id="2_lh3ke"]
 [ext_resource type="PackedScene" uid="uid://4238bl6eadrq" path="res://scene/killzone.tscn" id="3_w6p8r"]
 [ext_resource type="Script" uid="uid://btl6pmnln4nxx" path="res://script/boulder_collider.gd" id="4_etjjo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxq6u"]
+radius = 11.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vnukl"]
 atlas = ExtResource("2_lh3ke")
@@ -64,7 +67,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kvwbg")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
@@ -72,27 +75,37 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rju0r"]
 radius = 11.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1esh0"]
-radius = 13.038404
+[sub_resource type="CircleShape2D" id="CircleShape2D_etjjo"]
+radius = 15.297058
 
-[node name="boulder" type="Area2D"]
+[node name="boulder" type="Area2D" unique_id=896211287]
+collision_layer = 2
 script = ExtResource("1_1esh0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=675105732]
+shape = SubResource("CircleShape2D_qxq6u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1961552725]
 texture_filter = 1
 scale = Vector2(2.7085574, 2.7085574)
 sprite_frames = SubResource("SpriteFrames_d4hq0")
 autoplay = "default"
 frame_progress = 0.7614673
 
-[node name="killzone" parent="." instance=ExtResource("3_w6p8r")]
+[node name="killzone" parent="." unique_id=969069908 instance=ExtResource("3_w6p8r")]
+collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=1968465907]
 shape = SubResource("CircleShape2D_rju0r")
 
-[node name="BoulderCollision" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_1esh0")
+[node name="BoulderDetector" type="Area2D" parent="." unique_id=657899983]
+collision_layer = 16
+collision_mask = 2
+
+[node name="BoulderCollision" type="CollisionShape2D" parent="BoulderDetector" unique_id=233302298]
+shape = SubResource("CircleShape2D_etjjo")
 script = ExtResource("4_etjjo")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="BoulderDetector" to="." method="_on_boulder_detector_area_entered"]

@@ -164,7 +164,10 @@ func _process(_delta):
 
 	# Make slimes spawn faster over time
 	#spawn_interval = max(0.5, 2.0 - survival_time / 30.0)
-
+func get_free_spawn_positions() -> Vector2:
+	var available_positions = spawn_positions.duplicate()
+	available_positions.shuffle()
+	return available_positions[0]
 
 func add_point():
 	#score += 1

@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://4238bl6eadrq" path="res://scene/killzone.tscn" id="2_hqfu3"]
 [ext_resource type="Script" uid="uid://btl6pmnln4nxx" path="res://script/boulder_collider.gd" id="4_vnukl"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxml5"]
+radius = 8.062258
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vnukl"]
 atlas = ExtResource("1_o1cfg")
 region = Rect2(0, 32, 8, 8)
@@ -72,10 +75,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_75rro"]
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hqfu3"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vnukl"]
 
 [node name="boulder" type="Area2D" unique_id=1825794917]
+collision_layer = 2
 script = ExtResource("1_hqfu3")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1871251030]
+shape = SubResource("CircleShape2D_dxml5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=399091082]
 texture_filter = 1
@@ -86,13 +93,19 @@ autoplay = "default"
 frame_progress = 0.43104905
 
 [node name="killzone" parent="." unique_id=624995476 instance=ExtResource("2_hqfu3")]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=1102228571]
 shape = SubResource("CircleShape2D_75rro")
 
-[node name="BoulderCollision" type="CollisionShape2D" parent="." unique_id=1813788160]
-shape = SubResource("CircleShape2D_hqfu3")
+[node name="BoulderDetector" type="Area2D" parent="." unique_id=732962064]
+collision_layer = 16
+collision_mask = 2
+
+[node name="BoulderCollision" type="CollisionShape2D" parent="BoulderDetector" unique_id=1799644883]
+shape = SubResource("CircleShape2D_vnukl")
 script = ExtResource("4_vnukl")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="BoulderDetector" to="." method="_on_boulder_detector_area_entered"]
