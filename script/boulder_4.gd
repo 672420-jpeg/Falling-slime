@@ -44,7 +44,8 @@ func _on_boulder_detector_area_entered(area: Area2D) -> void:
 		
 		var old_position = global_position
 		#var new_position = game_manager.spawn_positions.pop_back()
-		var new_position = game_manager.get_free_spawn_positions()
+		#game_manager.spawn_positions.append(new_position)
+		var new_position = game_manager.get_free_spawn_positions(self)
 		global_position = new_position
 		
 		#print("OLD: ", old_position)

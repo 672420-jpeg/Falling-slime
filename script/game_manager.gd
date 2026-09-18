@@ -29,7 +29,7 @@ var spawn_positions = [
 	Vector2(120, -100),
 	Vector2(155, -100),
 ]
-
+var selected_positions = []
 var survival_time = 0.0
 var spawn_interval = 10
 var spawn_amount = 0
@@ -51,11 +51,11 @@ func _ready():
 	$boulder4.position = spawn_positions[3]
 	$boulder5.position = spawn_positions[4]
 	
-	print("boulder is at ", boulder.position)
-	print("boulder 2 is at ", boulder_2.position)
-	print("boulder 3 is at ", boulder_3.position)
-	print("boulder 4 is at ", boulder_4.position)
-	print("boulder 5 is at ", boulder_5.position)
+	#print("boulder is at ", boulder.position)
+	#print("boulder 2 is at ", boulder_2.position)
+	#print("boulder 3 is at ", boulder_3.position)
+	#print("boulder 4 is at ", boulder_4.position)
+	#print("boulder 5 is at ", boulder_5.position)
 	
 
 	
@@ -76,8 +76,10 @@ func _process(_delta):
 	#print("Boulder 5 is at " + str($boulder5.position))
 	if boulder_count == 1 \
 	and $boulder.position.y > 100:
-
-		spawn_positions.shuffle()
+		#while 
+		#spawn_positions.shuffle() 
+		#selected_positions = spawn_positions
+		#selected_positions[0].push($boulder.position)
 		$boulder.position = spawn_positions[0]
 		print("boulder is at ", boulder.position)
 		print("boulder 2 is at ", boulder_2.position)
@@ -165,9 +167,28 @@ func _process(_delta):
 
 	# Make slimes spawn faster over time
 	#spawn_interval = max(0.5, 2.0 - survival_time / 30.0)
-func get_free_spawn_positions() -> Vector2:
+func get_free_spawn_positions(exclude_boulder: Node2D) -> Vector2:
 	var available_positions = spawn_positions.duplicate()
 	available_positions.shuffle()
+	for spawn_position in available_positions:
+		
+		if exclude_boulder != boulder and spawn_position.distance_to(boulder.global_position) <= 40:
+			continue
+		
+		if exclude_boulder != boulder_2 and spawn_position.distance_to(boulder_2.global_position) <= 40:
+			continue
+		
+		if exclude_boulder != boulder_3 and spawn_position.distance_to(boulder_3.global_position) <= 40:
+			continue
+		
+		if exclude_boulder != boulder_4 and spawn_position.distance_to(boulder_4.global_position) <= 40:
+			continue
+		
+		if exclude_boulder != boulder_5 and spawn_position.distance_to(boulder_5.global_position) <= 40:
+			continue
+		
+		return spawn_position
+	
 	return available_positions[0]
 
 func add_point():
@@ -179,26 +200,26 @@ func add_point():
 
 #func spawn_enemies():
 	#while true:
-
+#
 		#for i in range(spawn_amount):
-
-			#if slime_scene == null:
-				#print("slime scene is missing!")
-				#return
-
-			#var slime = slime_scene.instantiate()
-
+#
+			##if boulder_scene == null:
+				##print("bouler scene is missing!")
+				##return
+##
+			##var boulder = boulder_scene.instantiate()
+#
 			#var random_x = randf_range(
 				#$LeftSpawn.position.x,
 				#$RightSpawn.position.x
 			#)
-
-			#slime.position = Vector2(random_x, 502)
-
-			#add_child(slime)
-
+#
+			#boulder.position = Vector2(random_x, 502)
+#
+			#add_child(boulder)
+#
 		#await get_tree().create_timer(spawn_interval).timeout
-		
-
-#func _ready():
+		#
+#
+#func _enemies():
 	#spawn_enemies()
